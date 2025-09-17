@@ -1,0 +1,38 @@
+version: '3.8'
+services:
+  app:
+    build:
+      context: ./.docker
+    container_name: seubazzar_app
+    restart: unless-stopped
+    environment:
+      - APP_ENV=local
+      - APP_DEBUG=true
+      - DB_CONNECTION=pgsql
+      - DB_HOST=db
+      - DB_PORT=5432
+      - DB_DATABASE=seubazzar
+      - DB_USERNAME=seubazzar
+      - DB_PASSWORD=secret
+    depends_on:
+      - db
+    ports:
+      - "80:80"
+    volumes:
+      - .:/var/www/html
+
+  db:
+    image: postgres:15
+    container_name: seubazzar_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: seubazzar
+      POSTGRES_USER: seubazzar
+      POSTGRES_PASSWORD: secret
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      
+volumes:
+  pgdata:
