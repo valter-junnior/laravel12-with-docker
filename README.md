@@ -1,4 +1,4 @@
-# SeuBazzar - Setup e Instalação
+# Laravel 12 com Docker - Setup e Instalação
 
 ## Pré-requisitos
 
@@ -9,8 +9,8 @@
 
 ### 1. Clone o repositório
 ```bash
-git clone <url-do-repositorio>
-cd seubazzar/app
+git clone https://github.com/valter-junnior/laravel12-with-docker.git
+cd laravel12-with-docker.
 ```
 
 ### 2. Build e start dos containers
